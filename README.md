@@ -5,8 +5,8 @@
 
 [![微信小程序](https://img.shields.io/badge/微信小程序-二多Lab-brightgreen)](https://github.com/erduo10/erduolab)
 [![License](https://img.shields.io/github/license/erduo10/erduolab)](https://github.com/erDuo10/erDuoLab/blob/master/LICENSE)
-[![Stars](https://img.shields.io/github/stars/erduo10/erduolab)](https://github.com/erduo10/erduolab/stargazers)
-[![Gitee](https://gitee.com/erDuoUp/erDuoLab/badge/star.svg?theme=dark)](https://gitee.com/erDuoUp/erDuoLab)
+[![GitHub Stars](https://img.shields.io/github/stars/erduo10/erduolab)](https://github.com/erduo10/erduolab/stargazers)
+[![Gitee Stars](https://gitee.com/erDuoUp/erDuoLab/badge/star.svg?theme=dark)](https://gitee.com/erDuoUp/erDuoLab)
 
 二多Lab是一个集数独游戏与福卡设计于一体的微信小程序，全程使用 Cursor AI 辅助开发。
 
@@ -102,7 +102,10 @@
 
 1. 克隆项目
 ```bash
+# GitHub
 git clone https://github.com/erduo10/erduolab.git
+# 或者 Gitee
+git clone https://gitee.com/erDuoUp/erDuoLab.git
 cd erduolab
 ```
 
@@ -305,10 +308,11 @@ erDuoLab:
 
 如果您在使用过程中遇到任何问题，或有好的建议，欢迎通过以下方式反馈：
 
-1. 提交 [Issue](https://github.com/erduo10/erduolab/issues)
-2. 关注公众号「二多Lab」，后台留言
-3. bilibili：[主页](https://space.bilibili.com/24818142) 
-4. 发送邮件至 duoup4ever@qq.com
+1. GitHub提交 [Issue](https://github.com/erduo10/erduolab/issues)
+2. Gitee提交 [Issue](https://gitee.com/erDuoUp/erDuoLab/issues)
+3. 关注公众号「二多Lab」，后台留言
+4. bilibili：[主页](https://space.bilibili.com/24818142) 
+5. 发送邮件至 duoup4ever@qq.com
 
 ## ☕️ 请作者喝咖啡
 
