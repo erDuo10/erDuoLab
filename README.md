@@ -4,7 +4,7 @@
 <div align="center">
 
 [![微信小程序](https://img.shields.io/badge/微信小程序-二多Lab-brightgreen)](https://github.com/erduo10/erduolab)
-[![License](https://img.shields.io/github/license/erduo10/erduolab)](https://github.com/erduo10/erduolab/LICENSE)
+[![License](https://img.shields.io/github/license/erduo10/erduolab)](https://github.com/erDuo10/erDuoLab/blob/master/LICENSE)
 [![Stars](https://img.shields.io/github/stars/erduo10/erduolab)](https://github.com/erduo10/erduolab/stargazers)
 
 // 如果同时托管在 Gitee，可以添加 Gitee 的徽章
