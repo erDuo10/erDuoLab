@@ -4,7 +4,7 @@
 <div align="center">
 
 [![微信小程序](https://img.shields.io/badge/微信小程序-二多Lab-brightgreen)](https://github.com/erduo10/erduolab)
-[![License](https://img.shields.io/github/license/erduo10/erduolab)](https://github.com/erduo10/erduolab/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/erduo10/erduolab)](https://github.com/erduo10/erduolab/LICENSE)
 [![Stars](https://img.shields.io/github/stars/erduo10/erduolab)](https://github.com/erduo10/erduolab/stargazers)
 
 // 如果同时托管在 Gitee，可以添加 Gitee 的徽章
@@ -274,7 +274,23 @@ erDuoLab:
 
 - 微信开发者工具
 - Node.js (>= 12.0.0)
+- 微信小程序账号
+- 云开发环境
 
+### 开发指南
+
+1. **配置开发环境**
+   - 申请微信小程序账号
+   - 开通云开发
+   - 配置云开发环境
+
+2. **本地开发**
+   - 本地调试：使用微信开发者工具
+
+3. **部署发布**
+   - 云函数部署
+   - 云数据库初始化
+   - 小程序发布
 
 ## 贡献指南
 
@@ -294,7 +310,8 @@ erDuoLab:
 
 1. 提交 [Issue](https://github.com/erduo10/erduolab/issues)
 2. 关注公众号「二多Lab」，后台留言
-3. 发送邮件至 duoup4ever@qq.com
+3. bilibili：[主页](https://space.bilibili.com/24818142) 
+4. 发送邮件至 duoup4ever@qq.com
 
 ## ☕️ 请作者喝咖啡
 
