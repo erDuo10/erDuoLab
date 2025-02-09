@@ -1,0 +1,268 @@
+/**
+ * 数独棋盘样式
+ * @version 1.0.0
+ * @lastUpdate 2024-xx-xx
+ */
+
+/* 小程序自定义组件样式 */
+/* 主题变量定义 */
+:host {
+    /* 主题色 */
+    --primary-color: #1976d2;    /* 主要颜色 */
+    --error-color: #d32f2f;      /* 错误颜色 */
+    --warning-color: #f57c00;    /* 警告颜色 */
+    --success-color: #388e3c;    /* 成功颜色 */
+
+    /* 边框颜色 */
+    --border-dark: #333;         /* 深色边框 */
+    --border-light: #ccc;        /* 浅色边框 */
+
+    /* 背景色 */
+    --bg-board: #e0e0e0;         /* 棋盘背景 */
+    --bg-cell: #fff;             /* 单元格背景 */
+    --bg-error: #ffebee;         /* 错误背景 */
+    --bg-warning: #fff3e0;       /* 警告背景 */
+    --bg-correct: #e8f5e9;       /* 正确背景 */
+    --bg-highlight: #e8f4f8;     /* 高亮背景 */
+    --bg-selected: #bbdefb;      /* 选中背景 */
+    --hint-bg: #f1f8e9;          /* 提示背景 */
+
+
+    /* 新增相同数字高亮背景色 */
+    --bg-same-number: #fff0c7;        /* 温和的黄色背景 */
+    --bg-same-number-selected: #ffe082; /* 选中时的深黄色背景 */
+
+    /* 文字颜色 */
+    --text-normal: #333;         /* 普通文字 */
+    --hint-color: #2e7d32;       /* 提示文字 */
+    --user-input-color: #333;    /* 用户输入文字 */
+
+    /* 尺寸 */
+    --border-width-thick: 4rpx;  /* 粗边框 */
+    --border-width-thin: 1rpx;   /* 细边框 */
+    --cell-font-size: 32rpx;     /* 单元格字号 */
+    --note-font-size: 16rpx;     /* 笔记字号 */
+
+    /* 字重 */
+    --font-weight-normal: 500;   /* 普通字重 */
+    --font-weight-bold: 600;     /* 加粗字重 */
+}
+
+/* 棋盘容器 */
+.sudoku-board {
+    width: 90vw;
+    max-width: 680rpx;
+    aspect-ratio: 1;
+    margin: 0 auto;
+}
+
+/* 棋盘网格 */
+.board-grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    border: var(--border-width-thick) solid var(--border-dark);
+    background: var(--bg-board);
+    gap: var(--border-width-thin);
+}
+
+/* 基础单元格样式 */
+.board-cell {
+    aspect-ratio: 1;
+    background: var(--bg-cell);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* 单元格边框 */
+.board-cell::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-right: var(--border-width-thin) solid var(--border-light);
+    border-bottom: var(--border-width-thin) solid var(--border-light);
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+/* 3x3宫格边框 */
+.board-cell:nth-child(3n):not(:nth-child(9n))::after {
+    border-right: var(--border-width-thick) solid var(--border-dark);
+}
+
+.board-cell:nth-child(n+19):nth-child(-n+27)::after,
+.board-cell:nth-child(n+46):nth-child(-n+54)::after {
+    border-bottom: var(--border-width-thick) solid var(--border-dark);
+}
+
+/* 数字样式 */
+.board-cell text {
+    font-size: var(--cell-font-size);
+    line-height: 1;
+    font-weight: var(--font-weight-normal);
+    color: var(--text-normal);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* 初始数字样式 */
+.board-cell.initial text {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-bold);
+}
+
+/* 用户输入样式 */
+.board-cell.user-input:not(.error):not(.warning):not(.correct) text {
+    display: block !important;
+    color: var(--user-input-color);
+    font-weight: var(--font-weight-normal);
+}
+
+/* 提示输入样式 */
+.board-cell.hint-input {
+    background-color: var(--hint-bg);
+}
+
+.board-cell.hint-input:not(.error):not(.warning):not(.correct) text {
+    color: var(--hint-color);
+    font-weight: var(--font-weight-normal);
+}
+
+/* 提示标记 - 圆点 */
+.board-cell.hint-input::before {
+    content: '';
+    position: absolute;
+    top: 4rpx;
+    right: 4rpx;
+    width: 12rpx;
+    height: 12rpx;
+    background-color: var(--hint-color);
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+/* 状态样式 */
+.board-cell.error {
+    background-color: var(--bg-error);
+}
+
+.board-cell.error text {
+    color: var(--error-color) !important;
+}
+
+.board-cell.warning {
+    background-color: var(--bg-warning);
+}
+
+.board-cell.warning text {
+    color: var(--warning-color) !important;
+}
+
+.board-cell.correct {
+    background-color: var(--bg-correct);
+}
+
+.board-cell.correct text {
+    color: var(--success-color) !important;
+}
+
+/* 笔记样式 */
+.board-cell.has-notes:not(.user-input) text {
+    display: none;
+}
+
+.notes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 4rpx;
+}
+
+.note {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--note-font-size);
+    color: var(--border-light);
+    line-height: 1;
+}
+
+/* 高亮和选中样式 */
+.board-cell.highlight {
+    background-color: var(--bg-highlight);
+}
+
+.board-cell.selected {
+    background-color: var(--bg-selected);
+    box-shadow: inset 0 0 0 2rpx var(--primary-color);
+}
+
+.board-cell.highlight.selected {
+    background-color: var(--bg-selected);
+}
+
+/* 修改同数字高亮样式 */
+.board-cell.same-number {
+    background-color: var(--bg-same-number);
+    transition: background-color 0.3s ease;
+}
+
+.board-cell.same-number.selected {
+    background-color: var(--bg-same-number-selected);
+    box-shadow: inset 0 0 0 2rpx var(--warning-color);
+}
+
+/* 处理多重高亮的优先级 */
+.board-cell.same-number.highlight {
+    background-color: var(--bg-same-number);  /* 保持相同数字的背景色 */
+}
+
+.board-cell.same-number.highlight.selected {
+    background-color: var(--bg-same-number-selected);
+}
+
+
+/* 错误状态下的笔记 */
+.board-cell.error .note {
+    color: var(--error-color);
+}
+
+/* 提示状态下的笔记 */
+.board-cell.hint-input .note {
+    color: var(--hint-color);
+}
+
+/* 选中状态下的笔记 */
+.board-cell.selected .note {
+    color: var(--primary-color);
+}
+
+/* 提示动画 */
+@keyframes hintPulse {
+    0% { transform: scale(1); background-color: var(--hint-bg); }
+    20% { transform: scale(1.1); background-color: var(--hint-bg); }
+    40% { transform: scale(1); background-color: var(--hint-bg); }
+    60% { transform: scale(1.05); background-color: var(--hint-bg); }
+    100% { transform: scale(1); background-color: var(--hint-bg); }
+}
+
+.board-cell.cell-hint {
+    animation: hintPulse 0.8s ease-in-out;
+}

@@ -1,0 +1,51 @@
+var getClassNames = function(cell, conditions) {
+    var classes = ['board-cell'];
+
+    // 确保所有条件对象存在
+    conditions = conditions || {};
+    conditions.cellStatus = conditions.cellStatus || {};
+
+    // 1. 基础状态
+    if (conditions.isInitial) {
+        classes.push('initial');
+    } else if (cell) {
+        classes.push('user-input');
+    }
+
+    // 2. 单元格状态 (error/warning/correct)
+    if (conditions.cellStatus.status) {
+        classes.push(conditions.cellStatus.status);
+    }
+
+    // 3. 提示状态
+    if (conditions.cellStatus.isHint) {
+        classes.push('hint-input');
+    }
+
+    // 4. 交互状态
+    if (conditions.isSelected) {
+        classes.push('selected');
+    }
+    if (conditions.isAnimating) {
+        classes.push('cell-hint');
+    }
+    if (conditions.highlight) {
+        classes.push('highlight');
+    }
+
+    // 5. 笔记状态
+    if (conditions.notes && conditions.notes.length > 0) {
+        classes.push('has-notes');
+    }
+
+    // 6. 同数字高亮
+    if (conditions.sameNumber) {
+        classes.push('same-number');
+    }
+
+    return classes.join(' ');
+};
+
+module.exports = {
+    getClassNames: getClassNames
+};

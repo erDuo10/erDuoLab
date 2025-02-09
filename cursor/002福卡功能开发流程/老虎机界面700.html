@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>777 Casino Slot Machine</title>
+    <style>
+        body {
+            background-color: #6b9b69;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .slot-machine {
+            width: 1080px;
+            height: 1800px;
+            background: linear-gradient(145deg, #ff5555, #ff3333);
+            border-radius: 80px;
+            padding: 60px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(145deg, #F5E6CA, #F5E6BF);
+            border-radius: 60px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 90px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 40px;
+        }
+
+        .header h1 {
+            background: linear-gradient(45deg, #ffa500, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            font-size: 100px;
+            font-weight: bold;
+        }
+
+        .display {
+            background: linear-gradient(145deg, #f0f0f0, #ffffff);
+            height: 960px;
+            border-radius: 45px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 36px;
+            padding: 45px;
+            margin-bottom: 90px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+            border: 12px solid #FFC107;
+        }
+
+        .reel {
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            border: none;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow:
+                inset 0 0 15px #ff8c00,
+                0 4px 8px rgba(0, 0, 0, 0.1);
+
+                
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            padding: 20px;
+        }
+
+        .reel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(145deg,
+                    rgba(255, 255, 255, 0.2) 0%,
+                    rgba(255, 255, 255, 0) 60%);
+            pointer-events: none;
+        }
+
+        .winner {
+            background: linear-gradient(145deg, #ff5555, #ff3333);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            margin-bottom: 60px;
+            padding-top: 50px;
+        }
+
+        .button {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(145deg, #ffeb4d, #ffd700);
+            border-radius: 24px;
+            border: none;
+            cursor: pointer;
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.1),
+                inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s;
+            color: #ff4444;
+            font-weight: bold;
+            font-size: 60px;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .lever-container {
+            position: absolute;
+            right: 150px;
+            top: 80%;
+            height: 600px;
+            width: 90px;
+        }
+
+        .lever-handle {
+            width: 105px;
+            height: 105px;
+            background: linear-gradient(145deg, #ff4444, #ff2222);
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: top 0.2s;
+            z-index: 10;
+        }
+
+        .lever-bar {
+            width: 24px;
+            height: 210px;
+            background: linear-gradient(90deg, #dddddd, #cccccc);
+            position: absolute;
+            left: 39px;
+            top: 60px;
+            border-radius: 4px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .symbol {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+
+        .text-symbol {
+            font-size: 96px;
+            color: #ffd32a;
+        }
+    </style>
+</head>
+
+<!-- 前面的样式代码保持不变 -->
+
+<body>
+    <div class="slot-machine">
+        <div class="header">
+            <h1>新年快乐</h1>
+        </div>
+        <div class="display" id="slotDisplay">
+            <!-- 移除固定位置的div，改为动态生成 -->
+        </div>
+        <div class="buttons">
+            <button class="button">2</button>
+            <button class="button">0</button>
+            <button class="button">2</button>
+            <button class="button">5</button>
+        </div>
+        <div class="lever-container">
+            <div class="lever-handle" id="leverHandle"></div>
+            <div class="lever-bar"></div>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            'tangerine.png',    // 橘子
+            'gold-ingot.png',   // 元宝
+            'apple.png',        // 苹果
+            'persimmon.png'     // 柿子
+        ];
+
+        const qrCodeImage = 'qrcode.jpg';
+        const wishes = ['万', '事', '如', '意'];
+        const gridSize = 16; // 4x4网格
+
+        // 生成所有格子的内容和位置
+        function generateGrid() {
+            // 创建所有可能的位置数组（0-15）
+            let positions = Array.from({ length: gridSize }, (_, i) => i);
+
+            // 随机选择4个位置放置"万事如意"
+            let wishPositions = [];
+            for (let i = 0; i < 4; i++) {
+                const randomIndex = Math.floor(Math.random() * positions.length);
+                wishPositions.push(positions.splice(randomIndex, 1)[0]);
+            }
+
+            // 随机选择1个位置放置二维码
+            const qrPosition = positions.splice(Math.floor(Math.random() * positions.length), 1)[0];
+
+            // 创建16个格子的内容数组
+            let grid = new Array(gridSize);
+
+            // 放置"万事如意"
+            wishPositions.forEach((pos, index) => {
+                grid[pos] = {
+                    type: 'wish',
+                    content: wishes[index]
+                };
+            });
+
+            // 放置二维码
+            grid[qrPosition] = {
+                type: 'qr',
+                content: qrCodeImage
+            };
+
+            // 在剩余位置随机放置图片
+            positions.forEach(pos => {
+                const randomImage = images[Math.floor(Math.random() * images.length)];
+                grid[pos] = {
+                    type: 'image',
+                    content: randomImage
+                };
+            });
+
+            return grid;
+        }
+
+        // 渲染网格
+        function renderGrid() {
+            const display = document.getElementById('slotDisplay');
+            display.innerHTML = ''; // 清空现有内容
+
+            const grid = generateGrid();
+
+            grid.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'reel';
+
+                if (item.type === 'wish') {
+                    div.classList.add('winner');
+                    div.innerHTML = `<span class="text-symbol">${item.content}</span>`;
+                } else if (item.type === 'qr') {
+                    div.innerHTML = `<img class="symbol qr-code" src="${item.content}" alt="二维码">`;
+                } else {
+                    div.innerHTML = `<img class="symbol" src="${item.content}" alt="图标">`;
+                }
+
+                display.appendChild(div);
+            });
+        }
+
+        // 初始化时渲染
+        renderGrid();
+
+        // 添加拉杆动画和随机效果
+        const leverHandle = document.getElementById('leverHandle');
+        leverHandle.addEventListener('click', () => {
+            // 拉杆动画
+            leverHandle.style.top = '200px';
+            setTimeout(() => {
+                leverHandle.style.top = '0';
+            }, 200);
+
+            // 重新渲染网格
+            renderGrid();
+        });
+    </script>
+</body>
+
+</html>

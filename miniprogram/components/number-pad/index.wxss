@@ -1,0 +1,87 @@
+:host {
+    /* 主题色 */
+    --primary-color: #1976d2;
+    --text-color: #333;
+
+    /* 背景色 */
+    --bg-key: #ffffff;
+    --bg-key-active: #f0f0f0;
+    --key-border: #e0e0e0;  /* 按键边框颜色 */
+    --key-shadow: #d0d0d0;  /* 按键阴影颜色 */
+
+    /* 尺寸 */
+    --key-height: 100rpx;
+    --gap: 12rpx;          /* 稍微减小间距 */
+    --border-radius: 16rpx;
+    --margin-bottom: 0;
+    
+    /* 3D 效果 */
+    --key-depth: 6rpx;     /* 按键深度 */
+
+    /* 字号 */
+    --font-size: 36rpx;
+}
+
+.number-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: var(--key-height);
+    gap: var(--gap);
+    margin-bottom: var(--margin-bottom);
+    padding: 8rpx;  /* 添加内边距 */
+}
+
+.number-key {
+    position: relative;
+    background: var(--bg-key);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size);
+    font-weight: 500;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    
+    /* 3D 效果 */
+    border: 1px solid var(--key-border);
+    border-bottom: var(--key-depth) solid var(--key-shadow);
+    transform: translateY(0);
+    transition: all 0.1s ease;
+}
+
+/* 按键激活状态 */
+.number-key:active:not(.disabled) {
+    transform: translateY(var(--key-depth));
+    border-bottom-width: 1px;
+    background: var(--bg-key-active);
+}
+
+/* 按键禁用状态 */
+.number-pad.disabled .number-key {
+    opacity: 0.5;
+    pointer-events: none;
+    border-bottom-width: 1px;
+    transform: translateY(var(--key-depth));
+}
+
+/* 添加按键内阴影 */
+.number-key::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius);
+    box-shadow: inset 0 2rpx 4rpx rgba(255, 255, 255, 0.8),
+                inset 0 -2rpx 4rpx rgba(0, 0, 0, 0.05);
+    pointer-events: none;
+}
+
+/* 数字样式 */
+.number-key text {
+    font-weight: 600;
+    color: #2c3e50;
+    text-shadow: 1rpx 1rpx 0 rgba(255, 255, 255, 0.8);
+}

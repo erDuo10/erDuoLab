@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "福卡预览",
+  "usingComponents": {
+    "fuka-pixel": "../../components/fuka-styles/pixel/index",
+    "fuka-cyberpunk": "../../components/fuka-styles/cyberpunk/index",
+    "fuka-slot": "../../components/fuka-styles/slot/index",
+    "fuka-ink": "../../components/fuka-styles/ink/index",
+    "fuka-flower": "../../components/fuka-styles/flower/index",
+    "fuka-red-packet": "../../components/fuka-styles/red-packet/index"
+  }
+} 

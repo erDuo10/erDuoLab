@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新年福卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .fu-card {
+            width: 1080px;
+            height: 1800px;
+            background: linear-gradient(to bottom, #FF4D4F, #FF1F1F);
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .fu-character {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            font-size: 600px;
+            color: #FFD700;
+            font-family: "STKaiti", "楷体", serif;
+            text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .decoration {
+            position: absolute;
+            width: 100%;
+            height: 200px;
+            background-size: 100px 100px;
+            opacity: 0.3;
+        }
+
+        .top-decoration {
+            top: 0;
+        }
+
+        .bottom-decoration {
+            bottom: 0;
+        }
+
+        .greeting {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            color: #FFD700;
+            font-family: "STXihei", "华文细黑", sans-serif;
+        }
+
+        .greeting-top {
+            top: 200px;
+            font-size: 60px;
+        }
+
+        .greeting-bottom {
+            bottom: 200px;
+            font-size: 48px;
+        }
+
+        .border-pattern {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 8px double #FFD700;
+            border-radius: 40px;
+        }
+
+        /* 添加金元宝装饰样式 */
+        .gold-ingot {
+            position: absolute;
+            width: 120px;
+            height: auto;
+            opacity: 0.9;
+        }
+
+        .ingot-1 {
+            top: 25%;
+            left: 15%;
+            transform: rotate(-15deg);
+        }
+
+        .ingot-2 {
+            top: 25%;
+            right: 15%;
+            transform: rotate(15deg);
+        }
+
+        .ingot-3 {
+            bottom: 25%;
+            left: 15%;
+            transform: rotate(-25deg);
+        }
+
+        .ingot-4 {
+            bottom: 25%;
+            right: 15%;
+            transform: rotate(25deg);
+        }
+
+        /* 稍微调整福字位置，确保与金元宝不重叠 */
+        .fu-character {
+            transform: translate(-50%, -55%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="fu-card">
+        <div class="border-pattern"></div>
+        <div class="decoration top-decoration"></div>
+        <div class="decoration bottom-decoration"></div>
+        <div class="greeting greeting-top">恭贺新春</div>
+        <div class="fu-character">福</div>
+        <div class="greeting greeting-bottom">万事如意 阖家幸福</div>
+        
+        <!-- 添加四个金元宝装饰 -->
+        <img src="gold-ingot.png" class="gold-ingot ingot-1" alt="金元宝">
+        <img src="gold-ingot.png" class="gold-ingot ingot-2" alt="金元宝">
+        <img src="gold-ingot.png" class="gold-ingot ingot-3" alt="金元宝">
+        <img src="gold-ingot.png" class="gold-ingot ingot-4" alt="金元宝">
+    </div>
+</body>
+</html>

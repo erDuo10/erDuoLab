@@ -1,0 +1,201 @@
+.container {
+  padding: 30rpx 30rpx;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* 顶部Logo区域 */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.logo {
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 10rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.slogan {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 核心功能展示 */
+.features {
+  margin-bottom: 40rpx;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 16rpx;
+  margin-bottom: 10rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.feature-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+
+.feature-info {
+  flex: 1;
+}
+
+.feature-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.feature-desc {
+  font-size: 26rpx;
+  color: #666;
+  margin-left: 10px;
+}
+
+/* 开源信息 */
+.open-source {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.github-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+  background: #24292e;
+  border-radius: 8rpx;
+}
+
+.github-icon {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+}
+
+.github-text {
+  color: #fff;
+  font-size: 28rpx;
+}
+
+/* 关注信息 */
+.follow-section {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 16rpx;
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.social-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-item image {
+  width: 180rpx;
+  height: 60rpx;
+  margin-bottom: 10rpx;
+}
+
+.social-item text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 项目特色 */
+.highlights {
+  background: #fff;
+  padding: 30rpx 30rpx 10rpx 30rpx;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+}
+
+.highlight-items {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.highlight-icon {
+  width: 64rpx;
+  height: 64rpx;
+  margin-bottom: 12rpx;
+}
+
+.highlight-text {
+  font-size: 26rpx;
+  color: #333;
+}
+
+/* 更新计划 */
+.update-plan {
+  background: #fff;
+  padding: 30rpx 30rpx 10rpx 30rpx;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+}
+
+.plan-items {
+  display: flex;
+  justify-content: space-around;
+  padding: 10rpx 0;
+}
+
+.plan-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  width: 45%;
+}
+
+.plan-highlight {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #2196f3;
+  margin-bottom: 8rpx;
+}
+
+.plan-desc {
+  font-size: 26rpx;
+  color: #666;
+}

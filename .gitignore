@@ -1,0 +1,25 @@
+# 开发工具配置
+.idea/
+.DS_Store
+node_modules/
+miniprogram_npm/
+erDuoLabIcon/
+erDuoLabOpen/
+.vscode/
+*.swp
+*.swo
+*.lnk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 项目配置文件
+project.private.config.json
+miniprogram/envList.js
+miniprogram/duo.js
+
+# 编译产物
+dist/
+
+# 本地环境
+.env.local

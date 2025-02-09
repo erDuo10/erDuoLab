@@ -1,0 +1,32 @@
+
+<wxs src="../../utils/wxs/format.wxs" module="format" />
+<view class="modal-container" wx:if="{{visible}}">
+  <view class="modal-mask"></view>
+  <view class="modal-content">
+    <view class="modal-header">
+      <text class="modal-title">发现存档</text>
+    </view>
+
+    <view class="modal-body">
+      <view class="save-info">
+        <view class="info-item">
+          <text class="label">难度：</text>
+          <text class="value">{{difficultyText}}</text>
+        </view>
+        <view class="info-item">
+          <text class="label">保存时间：</text>
+          <text class="value">{{saveTime}}</text>
+        </view>
+        <view class="info-item">
+          <text class="label">游戏时间：</text>
+          <text class="value">{{format.formatTime(gameTime)}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="modal-footer">
+      <button class="modal-btn cancel-btn" bindtap="onNewGame">新游戏</button>
+      <button class="modal-btn confirm-btn" bindtap="onContinueGame">继续游戏</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,42 @@
+<view class="achievement-page">
+  <!-- 成就总览 -->
+  <!-- <view class="achievement-summary">
+    <view class="total-achievements">
+      <text class="label">已解锁</text>
+      <text class="value">{{stats.unlockedCount}}/{{stats.totalCount}}</text>
+    </view>
+  </view> -->
+
+  <!-- Tab 切换栏 -->
+  <view class="tab-bar">
+    <view class="tab-item {{currentTab === index ? 'active' : ''}}" 
+          wx:for="{{categories}}" 
+          wx:key="id"
+          data-index="{{index}}"
+          bind:tap="switchTab">
+      {{item.name}}
+    </view>
+  </view>
+
+  <!-- 成就列表 -->
+  <view class="achievement-list">
+    <view class="achievement-item {{achievement.unlocked ? 'unlocked' : ''}}" 
+          wx:for="{{achievements[categories[currentTab].id]}}" 
+          wx:key="achievementId"
+          wx:for-item="achievement">
+      <image class="achievement-icon" src="{{achievement.config.icon}}" />
+      <view class="achievement-info">
+        <view class="achievement-name">{{achievement.config.name}}</view>
+        <view class="achievement-desc">{{achievement.config.description}}</view>
+        <view class="achievement-progress" wx:if="{{!achievement.unlocked && achievement.progress.percentage > 0}}">
+          <progress percent="{{achievement.progress.percentage}}" activeColor="#4CAF50" backgroundColor="#E0E0E0"/>
+          <text>{{achievement.progress.currentValue}}/{{achievement.progress.targetValue}}</text>
+        </view>
+      </view>
+      <view class="achievement-rewards">
+        <!-- <view class="points">{{achievement.config.points}}分</view> -->
+        <view class="coins">{{achievement.config.rewards[0].value}}金币</view>
+      </view>
+    </view>
+  </view>
+</view>

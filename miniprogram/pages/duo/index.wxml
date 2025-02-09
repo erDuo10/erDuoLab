@@ -1,0 +1,83 @@
+<view class="container">
+  <!-- 顶部Logo区域 -->
+  <view class="header">
+    <image class="logo" src="{{icons.logo}}" mode="aspectFit"></image>
+    <text class="title">二多Lab</text>
+    <text class="slogan">创意驱动开发，开源助力成长</text>
+  </view>
+
+  <!-- 核心功能展示 -->
+  <!-- <view class="features">
+    <view class="feature-item" bindtap="navigateToSudoku">
+      <image class="feature-icon" src="{{icons.sudoku}}" mode="aspectFit"></image>
+      <view class="feature-info">
+        <text class="feature-title">数独游戏</text>
+        <text class="feature-desc">多难度关卡，实时计时，成就系统</text>
+      </view>
+    </view>
+
+    <view class="feature-item" bindtap="navigateToFuka">
+      <image class="feature-icon" src="{{icons.fuka}}" mode="aspectFit"></image>
+      <view class="feature-info">
+        <text class="feature-title">福卡设计</text>
+        <text class="feature-desc">多种艺术风格，个性化祝福</text>
+      </view>
+    </view>
+  </view> -->
+
+  <!-- 项目特色 -->
+  <view class="highlights">
+    <text class="section-title">项目特色</text>
+    <view class="highlight-items">
+      <view class="highlight-item">
+        <image class="highlight-icon" src="{{icons.openSource}}" mode="aspectFit"></image>
+        <text class="highlight-text">完全开源</text>
+      </view>
+      <view class="highlight-item">
+        <image class="highlight-icon" src="{{icons.update}}" mode="aspectFit"></image>
+        <text class="highlight-text">持续更新</text>
+      </view>
+      <view class="highlight-item">
+        <image class="highlight-icon" src="{{icons.community}}" mode="aspectFit"></image>
+        <text class="highlight-text">社区共建</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 更新计划 -->
+  <view class="update-plan">
+    <text class="section-title">更新计划</text>
+    <view class="plan-items">
+      <view class="plan-item">
+        <text class="plan-highlight">每月</text>
+        <text class="plan-desc">上线1个新功能</text>
+      </view>
+      <view class="plan-item">
+        <text class="plan-highlight">2周</text>
+        <text class="plan-desc">1-2次功能优化</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开源信息 -->
+  <view class="open-source">
+    <text class="section-title">开源项目</text>
+    <view class="github-info" bindtap="openGithub">
+      <image class="github-icon" src="{{icons.github}}" mode="aspectFit"></image>
+      <text class="github-text">查看源码</text>
+    </view>
+  </view>
+
+  <!-- 关注信息 -->
+  <view class="follow-section">
+    <text class="section-title">关注我们</text>
+    <view class="social-links">
+      <view class="social-item" bindtap="copyOfficialAccount">
+        <image src="{{icons.wechat}}" mode="aspectFit"></image>
+      </view>
+      <view class="social-item" bindtap="openBilibili">
+        <image src="{{icons.bilibili}}" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+</view>

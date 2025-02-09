@@ -1,0 +1,7 @@
+<view class="flower-fuka">
+    <canvas type="2d" 
+            id="previewCanvas"
+            style="width:{{canvasWidth}}px; height:{{canvasHeight}}px;"
+            class="preview-canvas">
+    </canvas>
+</view>

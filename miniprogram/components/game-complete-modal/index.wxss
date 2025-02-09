@@ -1,0 +1,107 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  position: relative;
+  width: 80%;
+  max-width: 600rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  animation: modalIn 0.3s ease-out;
+}
+
+.modal-header {
+  padding: 32rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.modal-title {
+  font-size: 34rpx;
+  font-weight: normal;
+  color: #333;
+}
+
+
+
+
+.modal-body {
+  padding: 32rpx;
+}
+
+.game-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  align-items: center;
+}
+
+.stats-item {
+  font-size: 32rpx;
+  color: #666;
+  display: flex;
+  gap: 16rpx;
+}
+
+.difficulty-text,
+.time-text {
+  font-size: 32rpx;
+  color: #666;
+}
+
+.modal-footer {
+  padding: 24rpx;
+  display: flex;
+  gap: 24rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.modal-btn {
+  flex: 1;
+  height: 80rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-btn {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.confirm-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

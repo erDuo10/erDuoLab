@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数独分享封面</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 容器样式 */
+        .share-cover {
+            width: 500px;
+            height: 400px;
+            background: linear-gradient(135deg, #F8FAFC 0%, #E3F2FD 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* 数独棋盘样式 */
+        .sudoku-board {
+            width: 180px;
+            height: 180px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            padding: 2px;
+            margin-bottom: 4px;
+            position: relative;
+        }
+
+        .sudoku-cell {
+            background: white;
+            border: 1px solid #E0E0E0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #2C3E50;
+            font-weight: 500;
+        }
+
+        /* 铅笔图标 */
+        .pencil {
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 32px;
+            color: #F5A623;
+        }
+
+        /* 文字样式 */
+        .title {
+            font-size: 28px;
+            color: #2C3E50;
+            font-weight: bold;
+            margin-bottom: 0px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #4A90E2;
+            opacity: 0.8;
+        }
+
+        /* 装饰元素 */
+        .floating-numbers {
+            position: absolute;
+            font-size: 14px;
+            color: #4A90E2;
+            opacity: 0.2;
+        }
+
+        .n1 { top: 10%; left: 10%; }
+        .n2 { top: 20%; right: 15%; }
+        .n3 { bottom: 15%; left: 20%; }
+    </style>
+</head>
+<body>
+    <div class="share-cover">
+        <!-- 装饰性数字 -->
+        <div class="floating-numbers n1">3</div>
+        <div class="floating-numbers n2">7</div>
+        <div class="floating-numbers n3">4</div>
+
+        <!-- 数独棋盘 -->
+        <div class="sudoku-board">
+            <div class="sudoku-cell">7</div>
+            <div class="sudoku-cell">1</div>
+            <div class="sudoku-cell"></div>
+            <div class="sudoku-cell"></div>
+            <div class="sudoku-cell">4</div>
+            <div class="sudoku-cell">2</div>
+            <div class="sudoku-cell">5</div>
+            <div class="sudoku-cell"></div>
+            <div class="sudoku-cell">9</div>
+            
+            <!-- 铅笔图标 -->
+            <div class="pencil">✏️</div>
+        </div>
+
+        <!-- 文字部分 -->
+        <h1 class="title">数独挑战</h1>
+        <p class="subtitle">提升思维 · 享受乐趣</p>
+    </div>
+</body>
+</html>

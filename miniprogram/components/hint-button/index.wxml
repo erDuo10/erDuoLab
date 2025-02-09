@@ -1,0 +1,4 @@
+<view class="hint-button {{disabled || count <= 0 ? 'disabled' : ''}}" bindtap="onTap">
+  <view class="hint-icon">💡</view>
+  <text class="hint-count">{{count}}</text>
+</view> 

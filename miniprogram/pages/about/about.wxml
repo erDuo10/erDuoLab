@@ -1,0 +1,62 @@
+<view class="container">
+  <!-- 顶部导航 -->
+  <view class="nav-tabs">
+    <view class="tab {{currentTab === 'intro' ? 'active' : ''}}" bindtap="switchTab" data-tab="intro">游戏介绍</view>
+    <view class="tab {{currentTab === 'rules' ? 'active' : ''}}" bindtap="switchTab" data-tab="rules">游戏规则</view>
+    <view class="tab {{currentTab === 'tips' ? 'active' : ''}}" bindtap="switchTab" data-tab="tips">解题技巧</view>
+    <view class="tab {{currentTab === 'benefits' ? 'active' : ''}}" bindtap="switchTab" data-tab="benefits">游戏益处</view>
+  </view>
+
+  <!-- 内容区域 -->
+  <scroll-view scroll-y class="content-area">
+    <!-- 游戏介绍 -->
+    <view class="section" hidden="{{currentTab !== 'intro'}}">
+      <view class="section-title">什么是数独？</view>
+      <view class="section-content">
+        <text>数独（Sudoku）是一种基于数字排列的逻辑游戏，起源于瑞士，后在日本发扬光大。"数独"在日语中的含义是"数字只能使用一次"。</text>
+      </view>
+      
+      <view class="difficulty-list">
+        <view class="section-subtitle">难度等级</view>
+        <view class="difficulty-item" wx:for="{{difficultyLevels}}" wx:key="level">
+          <text class="level-name">{{item.level}}</text>
+          <text class="level-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 游戏规则 -->
+    <view class="section" hidden="{{currentTab !== 'rules'}}">
+          <!-- 这里可以添加一个示意图 -->
+      <image class="sudoku-grid-image" src="/images/sudoku-game.png" mode="aspectFit"></image>
+      <view class="section-title">基本规则</view>
+      <view class="rules-list">
+        <view class="rule-item" wx:for="{{gameRules}}" wx:key="index">
+          <text class="rule-text">{{item}}</text>
+        </view>
+      </view>
+
+    </view>
+
+    <!-- 解题技巧 -->
+    <view class="section" hidden="{{currentTab !== 'tips'}}">
+      <view class="section-title">常用解题技巧</view>
+      <view class="tips-list">
+        <view class="tip-item" wx:for="{{solvingTips}}" wx:key="name">
+          <text class="tip-name">{{item.name}}</text>
+          <text class="tip-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 游戏益处 -->
+    <view class="section" hidden="{{currentTab !== 'benefits'}}">
+      <view class="section-title">数独的益处</view>
+      <view class="benefits-list">
+        <view class="benefit-item" wx:for="{{benefits}}" wx:key="index">
+          <text class="benefit-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

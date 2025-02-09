@@ -1,0 +1,9 @@
+function formatTime(seconds) {
+    var minutes = Math.floor(seconds / 60);
+    var remainingSeconds = seconds % 60;
+    return minutes + "分" + remainingSeconds + "秒";
+}
+
+module.exports = {
+    formatTime: formatTime
+};

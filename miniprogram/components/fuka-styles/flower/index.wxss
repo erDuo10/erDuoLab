@@ -1,0 +1,12 @@
+.flower-fuka {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+.preview-canvas {
+    display: block;
+    margin: 0 auto;
+}

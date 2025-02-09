@@ -1,0 +1,3 @@
+<view class="timer">
+  <text class="time">{{displayTime}}</text>
+</view> 

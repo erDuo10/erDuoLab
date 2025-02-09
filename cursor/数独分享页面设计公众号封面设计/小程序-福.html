@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>福字卡片-像素版</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #FFE4B5;
+        }
+
+        .fu-card {
+            width: 1440px;
+            height: 1440px;
+            /* background-color: #FFE4B5; */
+            background-color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border-radius: 20px; */
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.2);
+        }
+
+        .fu-character {
+            font-size: 1500px;
+            color: #F44336;
+            font-family: "STXingkai", "华文行楷", "楷体", serif;
+            font-weight: 2000;
+            transform: rotate(-5deg);
+            /* -webkit-text-stroke: 2px #FFC107; */
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+            margin-top: 100px;  /* 微调位置 */
+        }
+
+        .corner {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 20px solid #F44336;
+        }
+
+        .top-left {
+            top: 30px;
+            left: 30px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .top-right {
+            top: 30px;
+            right: 30px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .bottom-left {
+            bottom: 30px;
+            left: 30px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .bottom-right {
+            bottom: 30px;
+            right: 30px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .circle {
+            position: absolute;
+            width: 1300px;
+            height: 1300px;
+            /* border: 6px solid #FFC107; */
+            border: 650px solid #F44336;
+            border-radius: 50%;
+            /* opacity: 0.3; */
+        }
+    </style>
+</head>
+<body>
+    <div class="fu-card">
+        <!-- <div class="circle"></div>
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div> -->
+        <div class="fu-character">福</div>
+    </div>
+</body>
+</html>

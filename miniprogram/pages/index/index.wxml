@@ -1,0 +1,49 @@
+<wxs src="../../utils/wxs/format.wxs" module="format" />
+
+<view class="container">
+  <view class="header">
+    <image class="logo" src="/images/lucky.png" mode="aspectFit" />
+    <text class="title">数独</text>
+  </view>
+
+<view class="statistics-grid">
+  <view wx:for="{{difficulties}}" wx:key="key" class="stat-card">
+    <text class="stat-title">{{item.name}}</text>
+    <view class="stat-content" wx:if="{{statistics}}">
+      <view class="stat-numbers">
+        <text class="stat-main">{{statistics.stats.difficultyStats[item.key].completed || 0}}</text>
+        <text class="stat-sub">/{{statistics.stats.difficultyStats[item.key].total || 0}}</text>
+      </view>
+      <view class="stat-best-time">
+        <text class="time-value">{{statistics.stats.difficultyStats[item.key].bestTime ? format.formatTime(statistics.stats.difficultyStats[item.key].bestTime) : '-'}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+  <!-- 难度选择列表 -->
+  <view class="difficulty-list">
+    <view 
+      wx:for="{{difficulties}}" 
+      wx:key="key"
+      class="difficulty-item"
+      data-difficulty="{{item.key}}"
+      bindtap="onStartGame"
+    >
+      <text class="difficulty-name">{{item.name}}</text>
+      <image class="arrow-icon" src="/images/arrow.svg" mode="aspectFit" />
+    </view>
+  </view>
+
+  <!-- 简化的底部信息栏 -->
+  <view class="bottom-info">
+    <view class="info-item" bindtap="onNavigateToAchievements">
+      <image class="info-icon" src="/images/achievement.png" mode="aspectFit" />
+      <text class="info-value">{{achievements.unlocked || 0}}/{{achievements.total || 0}}</text>
+    </view>
+    <view class="info-item">
+      <image class="info-icon" src="/images/coin.png" mode="aspectFit" />
+      <text class="info-value">{{coins || 0}}</text>
+    </view>
+  </view>
+</view>

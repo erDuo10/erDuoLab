@@ -1,0 +1,267 @@
+.game-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+
+  --bottom-safe-area: env(safe-area-inset-bottom, 0px);
+  --controls-padding: 20rpx;
+}
+
+/* 顶部区域 */
+.game-header {
+  padding: 12rpx 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+  flex: none; /* 防止伸缩 */
+}
+
+/* 游戏主体区域 */
+.game-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    /* 添加上下内边距 */
+    padding: 20rpx 0;
+}
+
+.game-board {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rpx;
+  min-height: 0;
+  /*max-height: 65vh;*/
+  /* 限制最大高度，预留广告空间 */
+  max-height: calc(100vh - 450rpx); /* 预留顶部状态栏、底部按键和广告空间 */
+}
+
+/* 游戏控制区域 */
+.game-controls {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: var(--controls-padding) 32rpx 0;
+    /* 确保控制区域在底部 */
+    position: relative;
+    z-index: 1;
+}
+
+/* 数字键盘样式调整 */
+number-pad {
+  margin-bottom: 16rpx;
+  /* 确保键盘在广告之上 */
+  position: relative;
+  z-index: 2;
+}
+
+
+/* 历史控制按钮 */
+.history-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16rpx;
+    padding: 0 0;
+    margin-top: auto; /* 将按钮推到底部 */
+}
+
+/* 统一按钮样式 */
+.control-btn {
+  --btn-depth: 6rpx;         /* 按钮深度 */
+  --btn-radius: 12rpx;       /* 按钮圆角 */
+
+  height: 82rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #666;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  padding: 0;
+  border: 1px solid;         /* 边框会根据不同状态设置颜色 */
+  margin: 0;
+
+  /* 默认状态 */
+  background: #ffffff;
+  transform: translateY(0);
+}
+
+/* 撤销按钮样式 */
+.undo-btn:not(.disabled) {
+    background: #f0f7ff;
+    color: #4096ff;
+    border-color: #bae0ff;
+    border-bottom: var(--btn-depth) solid #91caff;
+}
+
+/* 重做按钮样式 */
+.redo-btn:not(.disabled) {
+    background: #f6ffed;
+    color: #52c41a;
+    border-color: #b7eb8f;
+    border-bottom: var(--btn-depth) solid #95de64;
+}
+
+/* 按钮内阴影效果 */
+.control-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--btn-radius);
+    box-shadow: inset 0 2rpx 4rpx rgba(255, 255, 255, 0.8),
+                inset 0 -2rpx 4rpx rgba(0, 0, 0, 0.05);
+    pointer-events: none;
+}
+
+/* 按钮文字样式 */
+.control-btn text {
+    font-weight: 600;
+    text-shadow: 1rpx 1rpx 0 rgba(255, 255, 255, 0.6);
+}
+
+
+/* 按钮激活状态 */
+.control-btn:active:not(.disabled) {
+    transform: translateY(var(--btn-depth));
+    border-bottom-width: 1px;
+}
+
+/* 撤销按钮激活状态 */
+.undo-btn:active:not(.disabled) {
+    background: #e6f4ff;
+}
+
+/* 重做按钮激活状态 */
+.redo-btn:active:not(.disabled) {
+    background: #f0fce8;
+}
+
+/* 按钮禁用状态 */
+.control-btn.disabled {
+    opacity: 0.5;
+    background: #f5f5f5;
+    color: #999;
+    border-color: #e8e8e8;
+    border-bottom-width: 1px;
+    transform: translateY(var(--btn-depth));
+    pointer-events: none;
+}
+
+.error-counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rpx;
+}
+
+.error-icons {
+    display: flex;
+    gap: 8rpx;
+}
+
+.error-icon {
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.error-icon.active {
+    opacity: 1;
+    color: #ff4d4f;
+}
+
+.error-text {
+    font-size: 24rpx;
+    color: #666;
+}
+
+/* 错误动画效果 */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.error-shake {
+    animation: shake 0.3s ease-in-out;
+}
+
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    z-index: 1000;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+.loading-text {
+    font-size: 16px;
+    color: #333;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-text {
+    color: #ff4444;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* 广告容器样式优化 */
+.ad-container {
+    width: 100%;
+    min-height: 100rpx;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 移除绝对定位，使用相对布局 */
+    margin-top: auto;
+    padding-bottom: 0;
+}
+
+/* 为广告预留空间的容器 */
+.ad-space {
+    height: 100rpx;
+    width: 100%;
+    visibility: hidden; /* 占位但不可见 */
+}
+
+/* 无广告时的样式调整 */
+.game-controls.no-ad {
+    padding-bottom: calc(32rpx + var(--bottom-safe-area));
+}
+
+.game-controls.no-ad number-pad {
+    margin-bottom: 16rpx;
+}

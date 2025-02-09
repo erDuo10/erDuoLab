@@ -1,0 +1,17 @@
+<!-- 引入 WXS 文件 -->
+<wxs src="./utils.wxs" module="utils" />
+
+<view class="sudoku-board">
+    <view class="board-grid">
+        <block wx:for="{{puzzle}}" wx:for-item="row" wx:for-index="rowIndex" wx:key="rowIndex">
+            <block wx:for="{{row}}" wx:for-item="cell" wx:for-index="colIndex" wx:key="colIndex">
+                <view id="cell-{{rowIndex}}-{{colIndex}}" class="{{utils.getClassNames(cell, {isInitial: initialPuzzle[rowIndex][colIndex], cellStatus: cellStatus[rowIndex + '-' + colIndex], isSelected: selectedCell.row === rowIndex && selectedCell.col === colIndex, isAnimating: animatingCells[rowIndex + '-' + colIndex], highlight: cellStyles[rowIndex + '-' + colIndex].highlight, notes: cellStyles[rowIndex + '-' + colIndex].notes, sameNumber: cell && selectedNumber && cell === selectedNumber})}}" data-row="{{rowIndex}}" data-col="{{colIndex}}" bindtap="onTapCell">
+                    <text wx:if="{{cell && !cellStyles[rowIndex + '-' + colIndex].notes}}">{{cell}}</text>
+                    <view wx:if="{{cellStyles[rowIndex + '-' + colIndex].notes}}" class="notes">
+                        <view wx:for="{{cellStyles[rowIndex + '-' + colIndex].notes}}" wx:key="*this" class="note">{{item}}</view>
+                    </view>
+                </view>
+            </block>
+        </block>
+    </view>
+</view>

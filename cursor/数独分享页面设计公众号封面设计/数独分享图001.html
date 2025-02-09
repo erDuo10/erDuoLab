@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数独分享封面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .share-cover {
+            width: 500px;
+            height: 400px;
+            background: linear-gradient(135deg, #EEF6FF 0%, #F8FAFC 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .sudoku-board {
+            width: 240px; /* 增加尺寸 */
+            height: 240px;
+            background: white;
+            border-radius: 12px; /* 增加圆角 */
+            box-shadow: 0 8px 24px rgba(74, 144, 226, 0.12); /* 优化阴影效果 */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px; /* 增加间距 */
+            padding: 3px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .sudoku-cell {
+            background: white;
+            border: 1.5px solid #E8F0FE; /* 优化边框 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px; /* 增大字号 */
+            color: #1A2B3C; /* 更深的文字颜色 */
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .sudoku-cell:hover {
+            background: #F5F9FF;
+        }
+
+        .pencil {
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-45deg); /* 添加旋转效果 */
+            font-size: 40px;
+            filter: drop-shadow(2px 2px 4px rgba(245, 166, 35, 0.2)); /* 添加投影 */
+        }
+
+        .title {
+            font-size: 36px;
+            color: #1A2B3C;
+            font-weight: bold;
+            margin-bottom: 12px;
+            letter-spacing: 2px; /* 增加字间距 */
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #4A90E2;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: #4A90E2;
+            border-radius: 2px;
+            opacity: 0.3;
+        }
+
+        /* 添加装饰性元素 */
+        .decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #4A90E2;
+            opacity: 0.1;
+        }
+
+        .dot:nth-child(1) { top: 10%; left: 15%; }
+        .dot:nth-child(2) { top: 20%; right: 20%; }
+        .dot:nth-child(3) { bottom: 15%; left: 25%; }
+        .dot:nth-child(4) { bottom: 25%; right: 15%; }
+    </style>
+</head>
+<body>
+    <div class="share-cover">
+        <!-- 装饰性圆点 -->
+        <div class="decoration">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div class="sudoku-board">
+            <div class="sudoku-cell">7</div>
+            <div class="sudoku-cell">1</div>
+            <div class="sudoku-cell"></div>
+            <div class="sudoku-cell"></div>
+            <div class="sudoku-cell">4</div>
+            <div class="sudoku-cell">2</div>
+            <div class="sudoku-cell">5</div>
+            <div class="sudoku-cell"></div>
+            <div class="sudoku-cell">9</div>
+            
+            <div class="pencil">✏️</div>
+        </div>
+
+        <h1 class="title">数独挑战</h1>
+        <p class="subtitle">提升思维 · 享受乐趣</p>
+    </div>
+</body>
+</html>

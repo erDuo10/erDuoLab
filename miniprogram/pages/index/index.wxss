@@ -1,0 +1,275 @@
+/* 容器基础样式 */
+.container {
+  min-height: 100vh;
+  padding: 40rpx;
+  background: #fff;
+}
+
+/* 头部样式 */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.logo {
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.1);
+}
+
+/* 统计网格样式 */
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.stat-card {
+  border-radius: 16rpx;
+  padding: 24rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  border: 3rpx solid transparent;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+}
+
+.stat-card:nth-child(1) {
+  border-color: #2ecc71;
+  background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(46, 204, 113, 0.05));
+}
+
+.stat-card:nth-child(2) {
+  border-color: #3498db;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.15), rgba(52, 152, 219, 0.05));
+}
+
+.stat-card:nth-child(3) {
+  border-color: #f39c12;
+  background: linear-gradient(135deg, rgba(243, 156, 18, 0.15), rgba(243, 156, 18, 0.05));
+}
+
+.stat-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.stat-card:nth-child(1) .stat-title {
+  color: #27ae60;
+}
+
+.stat-card:nth-child(2) .stat-title {
+  color: #2980b9;
+}
+
+.stat-card:nth-child(3) .stat-title {
+  color: #d35400;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.stat-numbers {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 4rpx;
+}
+
+.stat-main {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.stat-card:nth-child(1) .stat-main {
+  color: #27ae60;
+}
+
+.stat-card:nth-child(2) .stat-main {
+  color: #2980b9;
+}
+
+.stat-card:nth-child(3) .stat-main {
+  color: #d35400;
+}
+
+.stat-sub {
+  font-size: 24rpx;
+  color: #7f8c8d;
+}
+
+.stat-best-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.time-label {
+  color: #7f8c8d;
+  margin-bottom: 4rpx;
+}
+
+.time-value {
+  font-weight: bold;
+  color: #34495e;
+}
+
+/* 难度列表样式 */
+.difficulty-list {
+  margin-bottom: 40rpx;
+}
+
+.difficulty-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  border-left: 8rpx solid transparent;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+}
+
+.difficulty-item:nth-child(1) {
+  border-left-color: #2ecc71;
+  background: linear-gradient(to right, rgba(46, 204, 113, 0.15), rgba(46, 204, 113, 0.05));
+}
+
+.difficulty-item:nth-child(2) {
+  border-left-color: #3498db;
+  background: linear-gradient(to right, rgba(52, 152, 219, 0.15), rgba(52, 152, 219, 0.05));
+}
+
+.difficulty-item:nth-child(3) {
+  border-left-color: #f39c12;
+  background: linear-gradient(to right, rgba(243, 156, 18, 0.15), rgba(243, 156, 18, 0.05));
+}
+
+.difficulty-name {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.difficulty-item:nth-child(1) .difficulty-name {
+  color: #27ae60;
+}
+
+.difficulty-item:nth-child(2) .difficulty-name {
+  color: #2980b9;
+}
+
+.difficulty-item:nth-child(3) .difficulty-name {
+  color: #d35400;
+}
+
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+  opacity: 0.6;
+}
+
+/* 底部信息栏样式 */
+.bottom-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+  margin-top: auto;
+  padding-top: 40rpx;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+}
+
+.info-item:nth-child(1) {
+  background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(155, 89, 182, 0.1));
+  border: 2rpx solid #9b59b6;
+}
+
+.info-item:nth-child(2) {
+  background: linear-gradient(135deg, rgba(241, 196, 15, 0.2), rgba(241, 196, 15, 0.1));
+  border: 2rpx solid #f1c40f;
+}
+
+.info-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.info-value {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.info-item:nth-child(1) .info-value {
+  color: #8e44ad;
+}
+
+.info-item:nth-child(2) .info-value {
+  color: #f39c12;
+}
+
+/* 交互效果 */
+.difficulty-item:active {
+  transform: translateX(10rpx);
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+}
+
+.info-item:active {
+  transform: scale(0.98);
+}
+
+.stat-card:active {
+  transform: scale(0.98);
+}
+
+/* 适配暗色模式 */
+@media (prefers-color-scheme: dark) {
+  .container {
+    background: #1a1a1a;
+  }
+
+  .title {
+    color: #ecf0f1;
+  }
+
+  .stat-card,
+  .difficulty-item,
+  .info-item {
+    background: #2d3436;
+  }
+
+  .time-value {
+    color: #ecf0f1;
+  }
+
+  .stat-sub {
+    color: #95a5a6;
+  }
+}

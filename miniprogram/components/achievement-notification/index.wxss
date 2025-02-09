@@ -1,0 +1,143 @@
+/* 基础容器样式 */
+.achievement-notification {
+  position: fixed;
+  top: 6%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 600rpx;
+  /* 更新为渐变背景 */
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  box-shadow: 0 4rpx 24rpx rgba(76, 175, 80, 0.2);
+  border-radius: 20rpx;
+  padding: 24rpx;
+  /* 更新文字颜色为白色 */
+  color: #ffffff;
+  z-index: 9999;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+}
+
+/* 标题容器 */
+.notification-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 12rpx;
+  border-bottom: 2rpx solid rgba(255, 255, 255, 0.2);
+}
+
+/* 可选：添加装饰性元素 */
+.notification-header::after {
+  content: '';
+  display: block;
+  width: 40rpx;
+  height: 4rpx;
+  background: rgba(255, 255, 255, 0.6);
+  margin: 8rpx auto 0;
+  border-radius: 2rpx;
+}
+
+/* 标题文字 */
+.notification-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 4rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  /* 添加发光效果 */
+  animation: titleGlow 2s ease-in-out infinite;
+}
+
+/* 发光动画 */
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    text-shadow: 0 2rpx 12rpx rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* 成就列表容器 */
+.achievements-list {
+  margin-top: 16rpx;
+  position: relative;
+  display: flex;
+  flex-direction: row;  /* 确保横向排列 */
+  justify-content: center;
+  align-items: center;
+  gap: 32rpx;  /* 增加图标之间的间距 */
+  padding: 12rpx 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 成就图标容器 */
+.achievement-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  min-width: 120rpx;  /* 确保有足够的空间显示文字 */
+}
+
+/* 图标样式 */
+.icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  padding: 10rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 成就名称 */
+.achievement-name {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  width: 120rpx;  /* 固定宽度确保对齐 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* 更多徽章 */
+.more-badge {
+  background: #ffffff;
+  color: #4CAF50;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 添加光效动画 */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.achievement-notification.show {
+  opacity: 1;
+  pointer-events: auto;
+  background: linear-gradient(
+    135deg,
+    #4CAF50,
+    #45a049,
+    #4CAF50
+  );
+  background-size: 200% 100%;
+  animation:
+    unlockAchievement 0.4s ease-out forwards,
+    shimmer 2s infinite linear;
+}
+

@@ -1,0 +1,11 @@
+<view class="number-pad {{disabled ? 'disabled' : ''}}">
+  <view
+    wx:for="{{numbers}}"
+    wx:key="*this"
+    class="number-key"
+    data-number="{{item}}"
+    bindtap="onTapNumber"
+  >
+    <text>{{item}}</text>
+  </view>
+</view>

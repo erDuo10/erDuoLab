@@ -1,0 +1,125 @@
+<view class="game-container" wx:if="{{pageState.showGameUI}}">
+    <!-- 游戏状态区域 -->
+    <view class="game-header">
+        <timer
+                running="{{gameState.status === 'PLAYING'}}"
+                initialSeconds="{{gameState.timeSpent}}"
+                bind:timeupdate="handleTimeUpdate"
+        />
+        <view class="hints">
+            <hint-button
+                    count="{{gameState.hintsRemaining}}"
+                    disabled="{{gameState.status !== 'PLAYING'}}"
+                    bind:hint="handleHint"
+            />
+        </view>
+        <!-- 错误次数显示 -->
+        <view class="error-counter">
+            <view class="error-icons">
+                <view class="error-icon {{gameState.errorCount > 0 ? 'active' : ''}}">❌</view>
+                <view class="error-icon {{gameState.errorCount > 1 ? 'active' : ''}}">❌</view>
+                <view class="error-icon {{gameState.errorCount > 2 ? 'active' : ''}}">❌</view>
+            </view>
+            <text class="error-text">{{gameState.maxErrors - gameState.errorCount}} 次机会</text>
+        </view>
+    </view>
+
+    <!-- 游戏主体区域（包含广告位） -->
+    <view class="game-main">
+        <!-- 主游戏区域 -->
+        <view class="game-board">
+            <sudoku-board
+                    id="sudokuBoard"
+                    puzzle="{{gameState.userProgress}}"
+                    initial-puzzle="{{gameState.initialPuzzle}}"
+                    editable="{{!pageState.isInitializing}}"
+                    bind:celltap="handleCellTap"
+            />
+        </view>
+    </view>
+
+    <!-- 操作控制区域 -->
+    <view class="game-controls {{!showAd || adLoadError ? 'no-ad' : ''}}">
+        <!-- 数字键盘组件 -->
+        <number-pad
+                disabled="{{pageState.isInitializing}}"
+                bind:numberselect="handleNumberSelect"
+        />
+
+        <!-- 广告或历史控制按钮 -->
+        <!-- 底部广告位 -->
+        <block wx:if="{{showAd && !adLoadError}}">
+            <view class="ad-container">
+                <ad unit-id="{{adUnitId}}"
+                    ad-type="banner"
+                    bind:error="onAdError"
+                    bind:load="onAdLoad"></ad>
+            </view>
+        </block>
+
+        <!-- 历史控制按钮 -->
+        <view class="history-controls" wx:else>
+            <button
+                    class="control-btn undo-btn {{canUndo ? '' : 'disabled'}}"
+                    bindtap="handleUndo"
+                    disabled="{{!canUndo}}"
+            >
+                <text>撤销</text>
+            </button>
+            <button
+                    class="control-btn redo-btn {{canRedo ? '' : 'disabled'}}"
+                    bindtap="handleRedo"
+                    disabled="{{!canRedo}}"
+            >
+                <text>重做</text>
+            </button>
+        </view>
+    </view>
+
+    <!-- 游戏完成模态框 -->
+    <game-complete-modal
+            visible="{{gameCompleteModal.visible}}"
+            difficulty="{{gameCompleteModal.difficulty}}"
+            timeSpent="{{gameCompleteModal.timeSpent}}"
+            bind:newgame="handleModalNewGame"
+            bind:backtomenu="handleModalBackToMenu"
+    />
+    <!-- 游戏重新开始模态框 -->
+    <game-restart-modal
+            visible="{{gameRestartModal.visible}}"
+            errorCount="{{gameState.errorCount}}"
+            maxErrors="{{gameState.maxErrors}}"
+            bind:restart="handleModalRestart"
+            bind:backtomenu="handleModalRestartBackToMenu"
+    />
+    <!-- 成就通知 -->
+    <achievement-notification
+            id="achievement-notification"
+            show="{{achievementNotification.show}}"
+            data="{{achievementNotification.data}}"
+            bind:hide="onAchievementNotificationHide"
+    />
+</view>
+
+
+        <!-- 可以添加加载中的提示 -->
+<view class="loading-container" wx:if="{{pageState.isInitializing}}">
+    <!-- 加载存档模态框 -->
+    <game-load-save-modal
+            wx:if="{{pageState.showLoadSaveDialog}}"
+            visible="{{loadSaveModal.visible}}"
+            difficulty="{{loadSaveModal.difficulty}}"
+            saveTime="{{loadSaveModal.saveTime}}"
+            gameTime="{{loadSaveModal.gameTime}}"
+            bind:continue="handleLoadSaveContinue"
+            bind:newgame="handleLoadSaveNew"
+    />
+
+    <view class="loading-content" wx:else>
+        <view class="loading-spinner"></view>
+        <view class="loading-text">
+             {{pageState.loadingText || (error || '准备中...')}}
+        </view>
+    </view>
+
+</view>

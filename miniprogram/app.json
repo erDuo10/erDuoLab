@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/fukaindex/index",
+    "pages/index/index",
+    "pages/game/game",
+    "pages/achievements/achievements",
+    "pages/preview/index",
+    "pages/duo/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "潼少年",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.writePhotosAlbum": {
+      "desc": "保存福卡图片到相册"
+    }
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#2196f3",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/fukaindex/index",
+        "text": "福卡",
+        "iconPath": "images/fuka.png",
+        "selectedIconPath": "images/fuka-active.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "数独",
+        "iconPath": "images/sudoku.png",
+        "selectedIconPath": "images/sudoku-active.png"
+      },
+      {
+        "pagePath": "pages/duo/index",
+        "text": "关于",
+        "iconPath": "images/about.png",
+        "selectedIconPath": "images/about-active.png"
+      }
+    ]
+  }
+}

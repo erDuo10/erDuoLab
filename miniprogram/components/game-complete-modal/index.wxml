@@ -1,0 +1,20 @@
+<view class="modal-container" wx:if="{{visible}}">
+  <view class="modal-mask"></view>
+  <view class="modal-content">
+    <view class="modal-header">
+      <text class="modal-title">{{title}}</text>
+    </view>
+
+    <view class="modal-body">
+      <view class="game-stats">
+        <text class="difficulty-text">难度：{{difficultyText}}</text>
+        <text class="time-text">用时：{{timeText}}</text>
+      </view>
+    </view>
+
+    <view class="modal-footer">
+      <button class="modal-btn confirm-btn" bindtap="onNewGame">新游戏</button>
+      <button class="modal-btn cancel-btn" bindtap="onBackToMenu">返回菜单</button>
+    </view>
+  </view>
+</view>

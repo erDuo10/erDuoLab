@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .card {
+            width: 1080px;
+            height: 1800px;
+            background: linear-gradient(180deg, #020008 0%, #050312 50%, #02020f 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .background-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .grid-rect {
+            position: absolute;
+            opacity: 0.25;
+            backdrop-filter: blur(2px);
+            /* 添加轻微的发光效果 */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            /* 添加边框使方块更清晰 */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .year {
+            margin-top: 200px;
+            display: flex;
+            gap: 40px;
+            z-index: 2;
+        }
+
+        .digit {
+            display: grid;
+            grid-template-columns: repeat(3, 30px);
+            grid-template-rows: repeat(5, 30px);
+            gap: 3px;
+        }
+
+        .digit-pixel {
+            background: #00ffff;
+            box-shadow: 0 0 20px #00ffff, 0 0 40px rgba(0, 255, 255, 0.5);
+        }
+
+        .text-container {
+            display: flex;
+            justify-content: center;
+            gap: 200px;
+            margin-top: 150px;
+            z-index: 2;
+        }
+
+        .text-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+        }
+
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 20px);
+            grid-template-rows: repeat(8, 20px);
+            gap: 3px;
+            margin: 15px 0;
+        }
+
+        .text-pixel {
+            opacity: 0.9;
+        }
+
+        .right-column {
+            margin-top: 100px;
+        }
+
+        .original-text {
+            position: absolute;
+            writing-mode: vertical-lr;
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 24px;
+            letter-spacing: 8px;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .left-text {
+            background: linear-gradient(45deg, #ff0088, #ff69b4);
+            text-shadow: 0 0 10px rgba(255, 0, 136, 0.5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .right-text {
+            background: linear-gradient(45deg, #00ffff, #0066ff);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="background-grid">
+            <!-- 背景方块将通过 JS 动态生成 -->
+        </div>
+
+        <div class="year">
+            <!-- 2025数字将通过 JS 动态生成 -->
+        </div>
+
+        <div class="text-container">
+            <div class="text-column">
+                <!-- 新年快乐将通过 JS 动态生成 -->
+                <div class="original-text left-text">新年快乐</div>
+            </div>
+            <div class="text-column right-column">
+                <!-- 万事如意将通过 JS 动态生成 -->
+                <div class="original-text right-text">万事如意</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 背景方块的颜色配置
+        // const rectColors = [
+        //     { color1: '#1a1155', color2: '#2a1f80' },  // 更亮的紫色
+        //     { color1: '#151666', color2: '#2525aa' },  // 更亮的蓝色
+        //     { color1: '#201570', color2: '#302590' },  // 深紫色
+        //     { color1: '#1a1580', color2: '#2a25b0' }   // 深蓝色
+        // ];
+        const rectColors = [
+            { color1: '#1a0f40', color2: '#2a1f60' },
+            { color1: '#201f60', color2: '#302f80' },
+            { color1: '#2f1f50', color2: '#3f2f70' },
+            { color1: '#251f70', color2: '#352f90' }
+        ];
+
+        // 生成背景方块
+        const grid = document.querySelector('.background-grid');
+        for (let i = 0; i < 100; i++) {
+            const rect = document.createElement('div');
+            rect.className = 'grid-rect';
+
+            const width = Math.random() * 100 + 20;
+            const height = Math.random() * 150 + 30;
+            const left = Math.random() * 1000;
+            const top = Math.random() * 1600;
+
+            rect.style.width = `${width}px`;
+            rect.style.height = `${height}px`;
+            rect.style.left = `${left}px`;
+            rect.style.top = `${top}px`;
+
+            const colorSet = rectColors[Math.floor(Math.random() * rectColors.length)];
+            const angle = Math.floor(Math.random() * 360);
+            rect.style.background = `linear-gradient(${angle}deg, ${colorSet.color1}, ${colorSet.color2})`;
+
+            grid.appendChild(rect);
+        }
+
+        // 数字点阵定义
+        const digits = {
+            '2': [
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1],
+                [1, 0, 0],
+                [1, 1, 1]
+            ],
+            '0': [
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 0, 1],
+                [1, 0, 1],
+                [1, 1, 1]
+            ],
+            '5': [
+                [1, 1, 1],
+                [1, 0, 0],
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1]
+            ]
+        };
+
+        // 生成数字
+        const year = document.querySelector('.year');
+        ['2', '0', '2', '5'].forEach(num => {
+            const digitEl = document.createElement('div');
+            digitEl.className = 'digit';
+            digits[num].forEach(row => {
+                row.forEach(cell => {
+                    const pixel = document.createElement('div');
+                    if (cell) pixel.className = 'digit-pixel';
+                    digitEl.appendChild(pixel);
+                });
+            });
+            year.appendChild(digitEl);
+        });
+
+        // 文字渐变色定义
+        const textGradients = {
+            left: {
+                color1: '#ff0088',
+                color2: '#ff69b4'
+            },
+            right: {
+                color1: '#00ffff',
+                color2: '#0066ff'
+            }
+        };
+
+        // 生成文字
+        const createText = (container, text, gradient) => {
+            text.split('').forEach(char => {
+                const charGrid = document.createElement('div');
+                charGrid.className = 'char-grid';
+
+                for (let i = 0; i < 64; i++) {
+                    const pixel = document.createElement('div');
+                    if (Math.random() > 0.5) {
+                        pixel.className = 'text-pixel';
+                        pixel.style.background = `linear-gradient(45deg, ${gradient.color1}, ${gradient.color2})`;
+                        pixel.style.boxShadow = `0 0 10px ${gradient.color1}`;
+                    }
+                    charGrid.appendChild(pixel);
+                }
+                container.appendChild(charGrid);
+            });
+        };
+
+        // 初始化文字
+        const leftColumn = document.querySelector('.text-column');
+        const rightColumn = document.querySelector('.right-column');
+        createText(leftColumn, '新年快乐', textGradients.left);
+        createText(rightColumn, '万事如意', textGradients.right);
+    </script>
+</body>
+
+</html>

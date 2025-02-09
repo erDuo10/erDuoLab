@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数独分享图</title>
+    <style>
+        .share-container {
+            width: 500px;
+            height: 400px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            position: relative;
+            /* padding: 20px; */
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #333;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .hint {
+            color: #3478F6;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .hint .bulb {
+            color: #FFB800;
+        }
+
+        .sudoku-board {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #333;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            width: 100%;
+            height: 100%;
+        }
+
+        .cell {
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #3478F6;
+        }
+
+        .cell.given {
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* 加粗的边框线 */
+        .cell:nth-child(3n) {
+            border-right: 2px solid #333;
+        }
+
+        .grid > .cell:nth-child(n+19):nth-child(-n+27),
+        .grid > .cell:nth-child(n+46):nth-child(-n+54) {
+            border-bottom: 2px solid #333;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+            font-size: 18px;
+        }
+
+        .decorative-corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #3478F6;
+            opacity: 0.5;
+        }
+
+        .top-left {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .top-right {
+            top: 10px;
+            right: 10px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .bottom-left {
+            bottom: 10px;
+            left: 10px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .bottom-right {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="share-container">
+        <!-- 装饰角 -->
+        <div class="decorative-corner top-left"></div>
+        <div class="decorative-corner top-right"></div>
+        <div class="decorative-corner bottom-left"></div>
+        <div class="decorative-corner bottom-right"></div>
+
+        <!-- 头部 -->
+        <div class="header">
+            <h1 class="title">数独游戏</h1>
+            <!-- <div class="hint"><span class="bulb">💡</span> 5</div> -->
+        </div>
+
+        <!-- 数独棋盘 -->
+        <div class="sudoku-board">
+            <div class="grid">
+                <!-- 这里使用JavaScript动态生成单元格 -->
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer">
+            来挑战数独吧！
+        </div>
+    </div>
+
+    <script>
+        // 示例数独数据
+        const sudokuData = [
+            8,0,0,4,1,3,7,0,0,
+            0,4,0,6,0,0,2,0,8,
+            0,7,9,2,0,0,1,3,4,
+            2,0,3,0,0,0,8,7,0,
+            4,5,6,8,9,7,3,1,2,
+            0,9,8,0,0,0,4,0,5,
+            3,4,1,0,5,0,6,8,0,
+            5,0,2,0,1,0,9,0,0,
+            0,0,7,3,6,4,0,0,1
+        ];
+
+        // 生成数独棋盘
+        const grid = document.querySelector('.grid');
+        sudokuData.forEach((num, index) => {
+            const cell = document.createElement('div');
+            cell.className = 'cell' + (num !== 0 ? ' given' : '');
+            cell.textContent = num !== 0 ? num : '';
+            grid.appendChild(cell);
+        });
+    </script>
+</body>
+</html>

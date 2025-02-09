@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "timer": "/components/timer/index",
+    "hint-button": "/components/hint-button/index",
+    "sudoku-board": "/components/sudoku-board/index",
+    "number-pad": "/components/number-pad/index",
+    "achievement-notification": "/components/achievement-notification/index",
+    "game-complete-modal": "/components/game-complete-modal/index",
+    "game-restart-modal": "/components/game-restart-modal/index",
+    "game-load-save-modal": "/components/game-load-save-modal/index"
+  }
+}

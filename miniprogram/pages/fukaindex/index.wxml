@@ -1,0 +1,61 @@
+<view class="container">
+    <!-- 卡片滑动区域 -->
+    <swiper
+            class="card-swiper"
+            circular="{{true}}"
+            previous-margin="100rpx"
+            next-margin="100rpx"
+            current="{{currentIndex}}"
+            bindchange="onSwiperChange">
+        <swiper-item wx:for="{{cards}}" wx:key="id" class="card-item">
+            <image
+                    class="card-image {{currentIndex === index ? 'active' : ''}}"
+                    src="{{item.imageUrl}}"
+                    mode="aspectFill"/>
+            <view wx:if="{{imageLoadStatus[item.id] === 'pending'}}" class="loading-indicator">
+                加载中...
+            </view>
+        </swiper-item>
+    </swiper>
+
+    <!-- 主要内容区域 -->
+    <view class="content-section">
+        <!-- 左侧福卡类型 -->
+        <view class="category-section">
+            <view class="category-grid">
+                <view
+                        wx:for="{{categories}}"
+                        wx:key="id"
+                        class="category-item {{selectedCategory === item.id ? 'active' : ''}}"
+                        bindtap="onCategorySelect"
+                        data-id="{{item.id}}">
+                    {{item.name}}
+                </view>
+            </view>
+        </view>
+
+        <!-- 右侧祝福语便利贴 -->
+        <view class="blessing-section">
+            <view class="blessing-note">
+                <view class="note-title">祝福语</view>
+                <view class="blessing-list">
+                    <view
+                            wx:for="{{currentBlessings}}"
+                            wx:key="*this"
+                            class="blessing-item"
+                            data-blessing="{{item}}">
+                        {{item}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 生成按钮 -->
+    <view class="button-group">
+        <button class="generate-btn" bindtap="handleGenerate">生成福卡</button>
+        <button class="refresh-btn {{isRefreshing ? 'rotating' : ''}}" bindtap="onRefreshBlessingsWithDebounce">
+            <image src="/images/refresh.png" mode="aspectFit"/>
+        </button>
+    </view>
+</view>

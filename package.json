@@ -1,0 +1,26 @@
+{
+  "name": "erduo-lab",
+  "version": "1.0.0",
+  "description": "二多Lab",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "test:achievement": "jest tests/achievement/",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@types/jest": "^29.5.14",
+    "babel-jest": "^27.0.6",
+    "eslint": "^7.32.0",
+    "jest": "^27.5.1",
+    "miniprogram-simulate": "^1.6.1"
+  }
+}

@@ -1,0 +1,80 @@
+<view class="preview-container">
+    <!-- 加载状态 -->
+    <view class="loading-wrapper" wx:if="{{isLoading}}">
+        <view class="loading-icon"></view>
+        <text>福卡加载中...</text>
+    </view>
+
+    <!-- 福卡内容 -->
+    <block wx:else>
+        <!-- 动态渲染对应样式组件 -->
+        <view class="fuka-wrapper">
+            <block wx:if="{{cardData.style === 'pixel'}}">
+                <fuka-pixel
+                        fukaData="{{cardData}}"
+                        class="fuka-component"
+                        id="fukaComponent"/>
+            </block>
+            <block wx:elif="{{cardData.style === 'cyberpunk'}}">
+                <fuka-cyberpunk
+                        fukaData="{{cardData}}"
+                        class="fuka-component"
+                        id="fukaComponent"/>
+            </block>
+            <block wx:elif="{{cardData.style === 'slot'}}">
+                <fuka-slot
+                        fukaData="{{cardData}}"
+                        class="fuka-component"
+                        id="fukaComponent"/>
+            </block>
+            <block wx:elif="{{cardData.style === 'ink'}}">
+                <fuka-ink
+                        fukaData="{{cardData}}"
+                        class="fuka-component"
+                        id="fukaComponent"/>
+            </block>
+            <block wx:elif="{{cardData.style === 'flower'}}">
+                <fuka-flower
+                        fukaData="{{cardData}}"
+                        class="fuka-component"
+                        id="fukaComponent"/>
+            </block>
+            <block wx:elif="{{cardData.style === 'redPacket'}}">
+                <fuka-red-packet
+                        fukaData="{{cardData}}"
+                        class="fuka-component"
+                        id="fukaComponent"/>
+            </block>
+        </view>
+
+        <view class="mask" wx:if="{{showSettingBtn}}"></view>
+        <button wx:if="{{showSettingBtn}}"
+                class="setting-btn"
+                open-type="openSetting"
+                bindopensetting="handleOpenSetting">
+            去设置页面打开权限
+        </button>
+        <!-- 操作按钮区 -->
+        <view class="action-bar">
+            <button class="action-btn" bindtap="handleBack">
+                <image src="{{from === 'share' ? buttonIcons.share : buttonIcons.generate}}"/>
+                <text>{{from === 'share' ? '制作福卡' : '返回'}}</text>
+            </button>
+            <button class="action-btn" open-type="share">
+                <image src="/images/share.png"/>
+                <text>分享给好友</text>
+            </button>
+            <button class="action-btn" bindtap="handleSaveImage">
+                <image src="/images/save.png"/>
+                <text>保存图片</text>
+            </button>
+        </view>
+
+
+        <!-- 用于生成分享图的canvas -->
+        <canvas type="2d"
+                id="fukaCanvas"
+                class="share-canvas"
+                style="width: 750px; height: 1000px;"/>
+    </block>
+</view>

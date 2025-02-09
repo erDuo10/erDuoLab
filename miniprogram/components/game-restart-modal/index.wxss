@@ -1,0 +1,143 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  position: relative;
+  width: 80%;
+  max-width: 600rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  animation: modalIn 0.3s ease-out;
+}
+
+.modal-header {
+  padding: 32rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.modal-title {
+  font-size: 34rpx;
+  font-weight: normal;
+  color: #333;
+}
+
+.modal-body {
+  padding: 32rpx;
+}
+
+.game-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  align-items: center;
+}
+
+.error-text {
+  font-size: 32rpx;
+  color: #666;
+  text-align: center;
+}
+
+.error-icons {
+  display: flex;
+  gap: 16rpx;
+  justify-content: center;
+  margin: 16rpx 0;
+}
+
+.error-icon {
+  font-size: 40rpx;
+  color: #ff4444;
+  animation: shake 0.5s ease-in-out;
+}
+
+.modal-footer {
+  padding: 24rpx;
+  display: flex;
+  gap: 24rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.modal-btn {
+  flex: 1;
+  height: 80rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin: 0;
+}
+
+.cancel-btn {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.confirm-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+/* 动画效果 */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5rpx);
+  }
+  75% {
+    transform: translateX(5rpx);
+  }
+}
+
+/* 按钮点击效果 */
+.modal-btn:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+/* 确保按钮在不同机型上都能正常显示 */
+@media screen and (max-width: 320px) {
+  .modal-content {
+    width: 90%;
+  }
+  
+  .modal-btn {
+    font-size: 24rpx;
+    height: 70rpx;
+  }
+}

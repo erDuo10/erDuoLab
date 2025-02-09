@@ -1,0 +1,27 @@
+<view class="achievement-notification {{show ? 'show' : ''}}"
+      animation="{{animationData}}"
+      wx:if="{{show}}">
+  <view class="notification-content">
+    <view class="notification-header">
+      <text class="notification-title">成就解锁</text>
+    </view>
+    <view class="achievements-list">
+      <!-- 最多显示3个成就图标 -->
+      <block wx:for="{{displayAchievements}}" wx:key="id">
+        <view class="achievement-icon">
+          <image
+            class="icon"
+            src="{{ item.config.icon }}"
+            mode="aspectFit"
+          />
+          <text class="achievement-name">{{item.config.name}}</text>
+        </view>
+      </block>
+
+      <!-- 如果有更多成就，显示数字标记 -->
+      <view class="more-badge" wx:if="{{remainingCount > 0}}">
+        +{{remainingCount}}
+      </view>
+    </view>
+  </view>
+</view>
