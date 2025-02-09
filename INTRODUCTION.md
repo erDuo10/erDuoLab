@@ -112,7 +112,7 @@
 ## 📬 联系方式
 
 - 关注公众号：二多Lab
-- GitHub：[项目地址](https://github.com/erduo10/erduolab/)
+- GitHub：[项目地址](https://github.com/erduo10/erDuoLab/)
 - bilibili：[主页](https://space.bilibili.com/24818142) 
 - 邮箱：duoup4ever@qq.com
 
