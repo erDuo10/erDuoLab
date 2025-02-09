@@ -6,7 +6,7 @@
 [![微信小程序](https://img.shields.io/badge/微信小程序-二多Lab-brightgreen)](https://github.com/erduo10/erduolab)
 [![License](https://img.shields.io/github/license/erduo10/erduolab)](https://github.com/erDuo10/erDuoLab/blob/master/LICENSE)
 [![Stars](https://img.shields.io/github/stars/erduo10/erduolab)](https://github.com/erduo10/erduolab/stargazers)
-[![Gitee](https://gitee.com/erDuoUp/erduolab/badge/star.svg?theme=dark)](https://gitee.com/erDuoUp/erduolab)
+[![Gitee](https://gitee.com/erDuoUp/erDuoLab/badge/star.svg?theme=dark)](https://gitee.com/erDuoUp/erDuoLab)
 
 二多Lab是一个集数独游戏与福卡设计于一体的微信小程序，全程使用 Cursor AI 辅助开发。
 
